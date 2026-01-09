@@ -160,3 +160,24 @@ li button {
         font-size: 1rem;
     }
 }
+
+.contador{
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contador-pendiente{
+    background-color: #f5b7b1;
+}
+
+.contador-proceso{
+    background-color: #ffe8a1;
+}
+
+.contador-completada{
+    background-color: #b7e1c1;
+}
+

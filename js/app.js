@@ -4,8 +4,11 @@ const listaPendiente = document.getElementById("lispendiente");
 const listaProceso = document.getElementById("lisproceso");
 const listaCompletada = document.getElementById("liscompletada");
 
-// Envio de formulario
-formulario.addEventListener("submit", function(e){
+const contpendiente = document.getElementById("contpendiente");
+const contproceso = document.getElementById("contproceso");
+const contcompletada = document.getElementById("contcompletada");
+
+formulario.addEventListener("submit", function (e){
     e.preventDefault();
 
     const textoTarea = descTarea.value.trim();
@@ -13,19 +16,25 @@ formulario.addEventListener("submit", function(e){
         return;
     }
 
+    crearTareaPendiente(textoTarea);
+    descTarea.value = "";
+});
+
+function crearTareaPendiente(texto){
     const li = document.createElement("li");
     const span = document.createElement("span");
     const botonIni = document.createElement("button");
     const botonEliminar = document.createElement("button");
 
-    span.textContent = textoTarea;
+    span.textContent = texto;
     botonIni.textContent = "Iniciar";
-    botonEliminar.textContent = "Borrar";
-    
-    botonIni.addEventListener("click", function(){
-        pasarproceso(li, span);
+    botonEliminar.textContent = "🗑️";
+
+    botonIni.addEventListener("click",function(){
+        pasarProceso(li, span);
     });
-     botonEliminar.addEventListener("click", function(){
+
+    botonEliminar.addEventListener("click",function(){
         eliminarTarea(li);
     });
 
@@ -34,27 +43,28 @@ formulario.addEventListener("submit", function(e){
     li.appendChild(botonEliminar);
 
     listaPendiente.appendChild(li);
+    actualizarContadores();
+}
 
-    descTarea.value = "";
-});
-
-function pasarproceso(li, span){
+function pasarProceso(li, span){
     li.innerHTML = "";
 
     const botonCompletada = document.createElement("button");
     botonCompletada.textContent = "✓";
 
-    botonCompletada.addEventListener("click", function () {
-        pasarcompletada(li, span);
+    botonCompletada.addEventListener("click",function(){
+        pasarCompletada(li, span);
     });
 
     li.appendChild(span);
     li.appendChild(botonCompletada);
+
     listaProceso.appendChild(li);
+    actualizarContadores();
 }
 
-function pasarcompletada(li, span){
-    li.innerHTML = ""; 
+function pasarCompletada(li, span){
+    li.innerHTML = "";
 
     const botonEliminar = document.createElement("button");
     botonEliminar.textContent = "🗑️";
@@ -64,10 +74,19 @@ function pasarcompletada(li, span){
     });
 
     li.appendChild(span);
-    listaCompletada.appendChild(li);
     li.appendChild(botonEliminar);
+
+    listaCompletada.appendChild(li);
+    actualizarContadores();
 }
 
-function eliminarTarea(li) {
+function eliminarTarea(li){
     li.remove();
+    actualizarContadores();
+}
+
+function actualizarContadores(){
+    contpendiente.textContent = listaPendiente.children.length;
+    contproceso.textContent = listaProceso.children.length;
+    contcompletada.textContent = listaCompletada.children.length;
 }
