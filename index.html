@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My to-do list</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>
+        MY TO-DO LIST
+    </h1>
+    <h2>
+        Añadir nueva actividad:
+    </h2>
+
+    <form id="formularioTarea" >
+        <input type="text" id="tarea" placeholder="Escribe la actividad ☺︎" required>
+        <button type="submit">Agregar</button>
+    </form>
+
+    <hr>
+    <section style="display:flex; gap:20px;">
+        <div>
+            <h3>PENDIENTES</h3>
+            <hr>
+            <ul id="lispendiente"></ul>
+        </div>
+
+        <div>
+            <h3>EN PROCESO</h3>
+            <hr>
+            <ul id="lisproceso"></ul>
+        </div>
+        <div>
+            <h3>REALIZADAS</h3>
+            <hr>
+            <ul id="liscompletada"></ul>
+        </div>
+    </section>
+
+    <script src="js/app.js"></script>
+    
+</body>
+</html>

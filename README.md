@@ -1,0 +1,1 @@
+Descripción del Proyecto: Es una aplicación web de lista de tareas que permite gestionarlas, mostrando tres estados posibles de las actividades. 
